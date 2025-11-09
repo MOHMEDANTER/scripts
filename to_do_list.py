@@ -24,4 +24,25 @@ def view():
   print(f"( {idx} )::::( {task} )::::( {status} )")
 
   print("---------------------------------------\n")
+def modify(modify_num):
+  pen = "Done"
+  try:
+    modified = int(modify_num) - 1
+    if 0 <= modified < len(todo_list):
+      if todo_list[modified]['status'] == "Pending":
+        todo_list[modified]['status'] = pen
+        print("the task modified")
+      else:
+        print(f"Task {modified + 1} is not pending.")
+    else:
+      print("Invalid task number")
+  except ValueError:
+    print("Invalid input. Please enter a valid number.")
 
+def delet(delet_num):
+  deleted = int(delet_num) - 1
+  if 0<=deleted<len(todo_list):
+    deleted_task = todo_list.pop(deleted)
+    print(f"The metion ( {delet_num} ) is ( {deleted_task['task']} ) and the status was ( {deleted_task["status"]} ) already deleted .")
+  else:
+      print("Invalid task number")
